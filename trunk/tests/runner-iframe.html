@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>TestRunner: NullJS</title>
+	<script type="text/javascript" src="../source/null.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+(function () {
+	nulljs.loader.addPath("tests.", ".");
+	nulljs.loader.addPath("mocks.", "./mocks");
+	
+	var testName = function () {
+		return document.location.search.substr(1);
+	};
+
+	var testUrl = function () {
+		return document.location;
+	};
+
+	var findPath = function (root, path) {
+		var x = root, p = path.split(".");
+		for(var i = 0; i < p.length; i++) {
+			x = x[p[i]];
+		}
+		return x;
+	};
+
+	nulljs.setup({forced_loading: true}).load(testName(), function () {
+		findPath(nulljs, testName()).run(testName(), testUrl());
+	});
+})();
+</script>
+</body>
+</html>
