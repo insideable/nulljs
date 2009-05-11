@@ -1,4 +1,4 @@
-nulljs.module("core.browser", [], function(api) {
+nulljs.module("com.nulljs.browser", function(api) {
 	
 	var Browser = {
 		engine: {name: false, version: false},
@@ -57,5 +57,5 @@ nulljs.module("core.browser", [], function(api) {
 		characterSet: typeof(document.characterSet) != "undefined" ? document.characterSet : document.charset
 	};
 
-    nulljs.register("core.browser", Browser);
+    return Browser;
 });

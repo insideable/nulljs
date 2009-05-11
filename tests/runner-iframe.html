@@ -8,11 +8,12 @@
 <body>
 <script type="text/javascript">
 (function () {
-	nulljs.loader.addPath("tests.", ".");
-	nulljs.loader.addPath("mocks.", "./mocks");
+	nulljs.addPath("com.nulljs.tests.", ".");
+	nulljs.addPath("com.nulljs.", "../source/plugins");
+	nulljs.addPath("com.nulljs.mocks.", "./mocks");
 	
 	var testName = function () {
-		return document.location.search.substr(1);
+		return document.location.search.substr(1, (document.location.search.indexOf("&")-1 || undefined));
 	};
 
 	var testUrl = function () {
@@ -27,8 +28,8 @@
 		return x;
 	};
 
-	nulljs.setup({forced_loading: true}).load(testName(), function () {
-		findPath(nulljs, testName()).run(testName(), testUrl());
+	nulljs.setup({forced_loading: true}).load(testName()).run(function (api) {
+		findPath(api, testName()).run(testName(), testUrl());
 	});
 })();
 </script>

@@ -9,16 +9,16 @@
 (function () {
 	var runTest = function (name) {
 		var iframe = document.getElementsByTagName("body")[0].appendChild(document.createElement("iframe"));
-		iframe.setAttribute("src", "./runner-iframe.html?" + name);
+		iframe.setAttribute("src", "./runner-iframe.html?" + name + "&" + Math.random());
 		iframe.style.display = "none";
 	};
 	
 	var tests = [
-		"TestCase", "TestClosure"
+		"TestCase", "TestContext"
 	];
 	
 	for(var i = 0; i < tests.length; i++) {
-		runTest("tests." + tests[i]);
+		runTest("com.nulljs.tests." + tests[i]);
 	}
 })();
 </script>

@@ -1,4 +1,4 @@
-nulljs.module("core.event", ["core.browser"], function (api) {
+nulljs.load("com.nulljs.browser").module("core.event", function (api) {
 
 	var event = {
 		addEventListener: typeof(window.addEventListener) == "undefined" ?
@@ -57,5 +57,5 @@ nulljs.module("core.event", ["core.browser"], function (api) {
 		event.addEventListener(window, "unload", fixMemoryLeaks);
 	}
 
-	nulljs.register("core.event", event);
+	return event;
 });

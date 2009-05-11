@@ -1,6 +1,6 @@
-nulljs.module("tests.TestCase", ["core.TestCase"], function (api) {
+nulljs.load("com.nulljs.TestCase").module("com.nulljs.tests.TestCase", function (api) {
 	
-	var TestTestCase = new api.core.TestCase({
+	var TestTestCase = new api.com.nulljs.TestCase({
 		testPassed: function () {
 			this.assertTrue(1 == 1, "assertTrue doesn't work");
 		},
@@ -16,6 +16,6 @@ nulljs.module("tests.TestCase", ["core.TestCase"], function (api) {
 		testIncomplete: function () {
 		}
 	});
-	nulljs.publicate("tests.TestCase", TestTestCase);
-	nulljs.register("tests.TestCase", TestTestCase);
+
+	return TestTestCase;
 });
