@@ -55,7 +55,7 @@
 					return this;
 				}
 		};
-	}
+	};
 	
 	var loader = new Loader(), modules = {}, namespaces = {}, Public = {}, Private = {};
 	
