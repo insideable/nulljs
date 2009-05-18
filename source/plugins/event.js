@@ -1,4 +1,4 @@
-nulljs.load("com.nulljs.browser").module("core.event", function (api) {
+nulljs.load("com.nulljs.browser").module("com.nulljs.event", function (api) {
 
 	var event = {
 		addEventListener: typeof(window.addEventListener) == "undefined" ?
@@ -8,7 +8,7 @@ nulljs.load("com.nulljs.browser").module("core.event", function (api) {
 			} :
 			function (element, event_name, listener, capture) { element.addEventListener(event_name, listener, capture || false) },
 
-		wrap: api.core.browser.ie ?
+		wrap: api.com.nulljs.browser.ie ?
 				function (e) {
 					e.target = e.srcElement;
 					e.currentTarget = e.fromElement;
@@ -18,7 +18,7 @@ nulljs.load("com.nulljs.browser").module("core.event", function (api) {
 				} :
 				function (e) { return e; },
 
-		fireEvent: api.core.browser.ie ?
+		fireEvent: api.com.nulljs.browser.ie ?
 				function (element, event_type) {
 					element.fireEvent("on" + event_type);
 				} :
@@ -53,7 +53,7 @@ nulljs.load("com.nulljs.browser").module("core.event", function (api) {
 		for(var i = 0; i < leakedHooks.length; leakedHooks[i++]());
 	};
 
-	if(api.core.browser.ie) {
+	if(api.com.nulljs.browser.ie) {
 		event.addEventListener(window, "unload", fixMemoryLeaks);
 	}
 
