@@ -10,7 +10,7 @@ nulljs.module("com.nulljs.dom", function () {
 
 	Dom.bindTo = function (doc) {
 		return (D = doc || document, Dom);
-	}
+	};
 
 	Dom.id = function (id) {
 		return D.getElementById(id);

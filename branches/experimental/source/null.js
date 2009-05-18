@@ -53,7 +53,7 @@ window['nulljs'] || (window['nulljs'] = function () {
 			return (A(hook[1]).filter(function (module) {
 				return !modules[module];
 			}).length > 0) || (function () {
-				runnable.push(function (f, api) { 
+				runnable.push(function (f, api) {
 					return function () { f(api); };
 				}(hook[0], makeApi(hook[1])));
 			})();
