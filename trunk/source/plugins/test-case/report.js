@@ -41,7 +41,7 @@ nulljs.load("com.nulljs.(dom|array|context)").module("com.nulljs.TestCase.Report
 			if(this.results[1].length > 0) {
 				this.nl().nl().print("Failed Asserts:");
 				A(this.results[1]).forEach(context(this, function (assert) {
-					this.nl().print("    " + assert[0] + " => " + assert[1]);
+					this.nl().print("    " + assert[0] + " => " + assert[1]); //.nl().print("Stack:").nl().print(assert[1].stack);
 				}));
 			}
 
@@ -49,6 +49,13 @@ nulljs.load("com.nulljs.(dom|array|context)").module("com.nulljs.TestCase.Report
 				this.nl().nl().print("Broken Asserts:");
 				A(this.results[2]).forEach(context(this, function (assert) {
 					this.nl().print("    " + assert[0] + " => " + assert[1]);
+				}));
+			}
+
+			if(this.results[3].length > 0) {
+				this.nl().nl().print("Incomplete Tests:").nl().print("    ");
+				A(this.results[3]).forEach(context(this, function (assert) {
+					this.print(assert[0] + " ");
 				}));
 			}
 

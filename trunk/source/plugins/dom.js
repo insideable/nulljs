@@ -27,7 +27,8 @@ nulljs.module("com.nulljs.dom", function () {
 	Dom.append = function (/* element */) {
 		var element = arguments[0], i = 0;
 		while(++i < arguments.length) {
-			element.appendChild(arguments[i]);
+			arguments[i] instanceof Array ? Dom.appendList(element, arguments[i]) : element.appendChild(arguments[i]);
+//			element.appendChild(arguments[i]);
 		}
 		return element;
 	};

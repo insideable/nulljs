@@ -22,6 +22,7 @@ nulljs.load("com.nulljs.(context|TestCase.Report)").module("com.nulljs.TestCase"
 		this.passed = context(passed, push);
 		this.failed = context(failed, push);
 		this.broken = context(broken, push);
+		this.incomplete = context(incomplete, push);
 		
 		this.methods = methods;
 		this.report = new api.com.nulljs.TestCase.Report(passed, failed, broken, incomplete);
@@ -38,7 +39,7 @@ nulljs.load("com.nulljs.(context|TestCase.Report)").module("com.nulljs.TestCase"
 			try {
 				context(this, this.methods[i])();
 				this.passed(i);
-				this.report.print(this.asserts == 0 ? "I" : ".");
+				this.report.print(this.asserts == 0 ? (this.incomplete([i]), "I") : ".");
 			} catch (e) {
 				if(!(e instanceof ExAssertFailed)) {
 					this.broken([i, e]);
