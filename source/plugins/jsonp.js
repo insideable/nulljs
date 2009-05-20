@@ -1,6 +1,6 @@
 nulljs.load("com.nulljs.(dom|random)").module("com.nulljs.jsonp", function (api) {
 	
-	var $ = api.com.nulljs.dom;
+	var $ = api.com.nulljs.dom();
 
 	var makeUrl = function (url, hash) {
 		var hash2uri = function (hash) {
