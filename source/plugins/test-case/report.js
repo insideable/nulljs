@@ -1,10 +1,9 @@
 nulljs.load("com.nulljs.(dom|array|context)").module("com.nulljs.TestCase.Report", function (api) {
-	var $D = (window.top == window ? window : window.top).document;
-	var $ = api.com.nulljs.dom.bindTo($D), A = api.com.nulljs.array, context = api.com.nulljs.context;
+	var $D = window.top.document;
+	var $ = api.com.nulljs.dom($D), A = api.com.nulljs.array, context = api.com.nulljs.context;
 	
 	var Report = function (passed, failed, broken, incomplete) {
 		$.append($.body(), this.container = $("pre", "", { style: "font-family: courier new, fixed; font-size: 10pt" }));
-//		this.container = $D.getElementsByTagName("body")[0].appendChild($D.createElement("div"));
 		this.results = [passed, failed, broken, incomplete];
 	};
 
