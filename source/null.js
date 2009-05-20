@@ -143,6 +143,15 @@ window['nulljs'] || (window['nulljs'] = function () {
 		return l;
 	};
 
+	paths["com.nulljs."] = findBaseUrl("/null.js") + "/plugins";
+
+	var merge = function (dst, src) {
+		for(var i in src) {
+			dst[i] = src[i];
+		}
+		return dst;
+	};
+
 	return {
 		load: function () {
 			return Code(load(arguments));
@@ -160,16 +169,16 @@ window['nulljs'] || (window['nulljs'] = function () {
 			registerModule(name, f);
 		},
 
-		setup: function () {
-			return this;
+		setup: function (options) {
+			return (merge(Options, options), this);
 		},
 
-		$: {
+		$debugger: {
 			modules: modules,
 			paths: paths,
 			packages: packages,
 			hooks: hooks
 		}
-	}
+	};
 
 }());
