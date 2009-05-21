@@ -38,18 +38,15 @@ nulljs.load("com.nulljs.(context|TestCase.Report)").module("com.nulljs.TestCase"
 			this.cleanup();
 			try {
 				context(this, this.methods[i])();
-				this.passed(i);
-				this.report.print(this.asserts == 0 ? (this.incomplete([i]), "I") : ".");
+				this.report.print(this.asserts == 0 ? (this.incomplete([i]), "I") : (this.passed(i), "."));
 			} catch (e) {
 				if(!(e instanceof ExAssertFailed)) {
 					this.broken([i, e]);
 					this.report.print("B");
-//                    TestCase.throwMessage(e);
 				} else {
 					this.failed([i, e]);
 					this.report.print("F");
 				}
-//				TestCase.throwMessage((e.message = name + "." + i + ": " + e.message,e ));
 			}
 		}
 		this.report.printSummary();
