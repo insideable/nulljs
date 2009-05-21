@@ -36,7 +36,7 @@ nulljs.load("com.nulljs.(dom|array|context)").module("com.nulljs.TestCase.Report
 			.print(", Broken: " + this.results[2].length)
 			.print(", Incomplete: " + this.results[3].length);
 
-		if(this.results[1].length > 0 || this.results[2].length > 0) {
+		if(this.results[1].length > 0 || this.results[2].length > 0 || this.results[3].length > 0) {
 			if(this.results[1].length > 0) {
 				this.nl().nl().print("Failed Asserts:");
 				A(this.results[1]).forEach(context(this, function (assert) {
