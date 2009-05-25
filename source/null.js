@@ -165,6 +165,10 @@ window['nulljs'] || (window['nulljs'] = function () {
 			packages[prefix] = path;
 		},
 
+		self: function (path) {
+			cache[path] = true;
+		},
+
 		module: function (name, f) {
 			registerModule(name, f);
 		},
