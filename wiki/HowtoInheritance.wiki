@@ -39,12 +39,14 @@ Mage.prototype.fight = function (person) {
 
 var person = new Person("Humanoid"), house = new Doctor("House M.D."), aibolit = new Doctor("Aibolit");
 
+house.talk();
 house.heal(person);
 house.heal(aibolit);
 
 var mage = new Mage("BlackMagic");
-mage.heal(person);
-mage.fight(house);
+person.fight(mage);
+mage.heal(aibolit);
+mage.fight(person);
 
 
 }}}
