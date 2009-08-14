@@ -5,8 +5,11 @@ nulljs.load("com.nulljs.browser").module("com.nulljs.event", function (api) {
 			function (element, event_name, listener) {
 				element.attachEvent("on" + event_name, listener);
 				addLeakedHook(element, "on" + event_name, listener);
+				return element;
 			} :
-			function (element, event_name, listener, capture) { element.addEventListener(event_name, listener, capture || false) },
+			function (element, event_name, listener, capture) {
+				return (element.addEventListener(event_name, listener, capture || false), element);
+			},
 
 		wrap: api.com.nulljs.browser.ie ?
 				function (e) {
