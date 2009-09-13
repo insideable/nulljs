@@ -103,11 +103,18 @@ window['nulljs'] || (window['nulljs'] = function () {
 			}
 		}
 		return (function () {
-			for(var i in paths) {
-				if(module.indexOf(i) == 0) {
-					return paths[i] + "/" + module.substr(i.length).split(".").join("/") + ".js";
+			var l = module.length;
+			while(l-- > 0) {
+				var s = module.substring(0, l);
+				if(typeof paths[s] != "undefined") {
+					return paths[s] + "/" + module.substr(s.length).split(".").join("/") + ".js";
 				}
 			}
+//			for(var i in paths) {
+//				if(module.indexOf(i) == 0) {
+//					return paths[i] + "/" + module.substr(i.length).split(".").join("/") + ".js";
+//				}
+//			}
 			return (findBaseUrl("/null.js") + "/plugins/" + module.split(".").join("/") + ".js")
 		})().replace(/([A-Z])/g, function (m) { return "-" + m.toLowerCase(); }).replace(/\/-/g, "/");
 	};
@@ -143,7 +150,7 @@ window['nulljs'] || (window['nulljs'] = function () {
 		return l;
 	};
 
-//	paths["com.nulljs."] = findBaseUrl("/null.js") + "/plugins";
+	paths["com.nulljs."] = findBaseUrl("/null.js") + "/plugins";
 
 	var merge = function (dst, src) {
 		for(var i in src) {
