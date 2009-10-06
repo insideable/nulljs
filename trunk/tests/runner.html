@@ -5,6 +5,7 @@
 	<title>TestRunner: NullJS</title>
 </head>
 <body>
+<script type="text/javascript" src="./config.js"></script>
 <script type="text/javascript">
 (function () {
 	var runTest = function (name) {
@@ -12,10 +13,6 @@
 		iframe.setAttribute("src", "./runner-iframe.html?" + name + "&" + Math.random());
 		iframe.style.display = "none";
 	};
-	
-	var tests = [
-		"TestCase", "TestContext"
-	];
 	
 	for(var i = 0; i < tests.length; i++) {
 		runTest("com.nulljs.tests." + tests[i]);
