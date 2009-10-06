@@ -2,7 +2,7 @@
 
 = com.nulljs.memoize =
 
-*memoize* implements cached calling for _clean functions_.
+*memoize* implements cached calling of _clean functions_.
 
 Usage:
 {{{
@@ -23,5 +23,15 @@ var fib = function (n) {
 var fast_fib = Memoize(function (n) {
 	return n > 1 ? fast_fib(n - 1) + fast_fib(n - 2) : (n > 0 ? 1 : 0);
 });
+
+var time = function (f) {
+        return function (t0) {
+                f();
+                return (now() - t0);
+        }(now());
+};
+
+alert("Fib timings: " + time(fib(30)));
+alert("Fast Fib timings: " + time(fast_fib(30)));
 
 }}}
