@@ -1,3 +1,5 @@
+#summary Example of OOP implementation based on functions and arrays.
+
 {{{
 
 var person_talk = function (person) {
