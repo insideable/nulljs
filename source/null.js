@@ -81,6 +81,7 @@ window['nulljs'] || (window['nulljs'] = function () {
 				addHook(function (api) {
 					registerModule(name, f, api);
 				}, api);
+				cache[findUrl(name)] = name;
 			}
 		};
 	};
@@ -103,8 +104,8 @@ window['nulljs'] || (window['nulljs'] = function () {
 			}
 		}
 		return (function () {
-			var l = module.length;
-			while(l-- > 0) {
+			var l = module.length + 1;
+			while(--l > 0) {
 				var s = module.substring(0, l);
 				if(typeof paths[s] != "undefined") {
 					return paths[s] + "/" + module.substr(s.length).split(".").join("/") + ".js";

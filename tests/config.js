@@ -1,3 +1,3 @@
 var tests = [
-	"TestCase", "TestContext", "TestMemoize"
+	"TestCase", "TestContext", "TestMemoize", "TestCss"
 ];

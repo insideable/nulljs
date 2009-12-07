@@ -24,6 +24,24 @@ nulljs.module("com.nulljs.array", function () {
 					x && r.push(a[i]);
 				}
 				return r;
+			},
+			indexOf: function (value) {
+				for(var i = 0; i < a.length; i++) {
+					if(a[i] === value) {
+						return i;
+					}
+				}
+				return -1;
+			},
+
+			append: function () {
+				for(var i = 0, l = arguments.length; i < l; i++) {
+					var arr = arguments[i];
+					for(var j = 0, k = arr.length; j < k; j++) {
+						a.push(arr[j]);
+					}
+				}
+				return a;
 			}
 		};
 	};
