@@ -1,0 +1,49 @@
+#summary Start page of nulljs API Reference
+
+= nulljs core interface =
+
+== `nulljs.addPath(prefix, path) -> void` ==
+
+Устанавливает префикс пути `path`, который будет использоваться для загрузки модулей с префиксом `prefix`.
+
+*Пример:*
+{{{
+nulljs.addPath("com.skype.", "http://skype.com/js");
+
+// обращаемся к http://skype.com/js/messenger.js
+nulljs.load("com.skype.messenger");
+
+// обращаемся к http://skype.com/js/proxy/video.js
+nulljs.load("com.skype.proxy.video");
+
+}}}
+
+== `nulljs.addPackage(prefix, package) -> void` ==
+
+Указывает, что модули с префиксом имени `prefix` находятся в файле `package`. При загрузке нескольких модулей с данным префиксом, обращение к `package` будет выполнено только один раз.
+
+*Пример:*
+{{{
+nulljs.addPackage("com.google.", "http://google.com/js-api/compressed.js");
+
+nulljs.load("com.google.maps"); // грузим http://google.com/js-api/compressed.js
+nulljs.load("com.google.office"); // ничего не грузим
+}}}
+
+== `nulljs.load(<modules>)` -> Code object ==
+
+Загружает указанные модули, включая требуемые зависимости. Модули загружаются согласно путям, установленным ранее через `addPath`, `addPackage`.
+
+*Пример:*
+{{{
+// загрузим три модуля
+nulljs.load("com.example.foo", "com.example.bar", "com.example.zoo");
+
+// версия для ленивых. полезна для пачки модулей с одним префиксом:
+nulljs.load("com.example.(foo|bar|zoo)");
+// P.S. так зарождался Perl ;-)
+}}}
+
+== `nulljs.module(name, constructor)` ==
+
+Декларирует модуль
