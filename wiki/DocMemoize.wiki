@@ -14,24 +14,28 @@ Call to api.com.nulljs.memoize() creates new memoize() function each time when c
 Example:
 {{{
 
-var Memoize = api.com.nulljs.memoize();
+nulljs.load("com.nulljs.memoize").run(function (api) {
+            var Memoize = api.com.nulljs.memoize();
 
-var fib = function (n) {
-	return n > 1 ? fib(n - 1) + fib(n - 2) : (n > 0 ? 1 : 0);
-};
+            var fib = function (n) {
+                    return n > 1 ? fib(n - 1) + fib(n - 2) : (n > 0 ? 1 : 0);
+            };
 
-var fast_fib = Memoize(function (n) {
-	return n > 1 ? fast_fib(n - 1) + fast_fib(n - 2) : (n > 0 ? 1 : 0);
-});
+            var fast_fib = Memoize(function (n) {
+                    return n > 1 ? fast_fib(n - 1) + fast_fib(n - 2) : (n > 0 ? 1 : 0);
+            });
 
-var time = function (f) {
-        return function (t0) {
-                f();
-                return (now() - t0);
-        }(now());
-};
+            var now = function () { return +new Date()};
 
-alert("Fib timings: " + time(fib(30)));
-alert("Fast Fib timings: " + time(fast_fib(30)));
+            var time = function (f) {
+                    return function (t0) {
+                            f();
+                            return (now() - t0);
+                    }(now());
+            };
+
+            alert("Fib timings: " + time(function () { fib(30) }));
+            alert("Fast Fib timings: " + time(function () { fast_fib(30) }));
+        });
 
 }}}
