@@ -21,7 +21,7 @@ nulljs.load("com.nulljs.(TestCase|css)").module("com.nulljs.tests.TestCss", func
 		},
 
 		testRemoveClass: function () {
-			var element = $.className({}, "foo  bar  zoo");
+			var element = $.className({}, "foo   bar   zoo");
 			var element2 = $.removeClass(element, "bar");
 
 			this.assertTrue(element2 === element, "element expected");

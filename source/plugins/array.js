@@ -34,6 +34,16 @@ nulljs.module("com.nulljs.array", function () {
 				return -1;
 			},
 
+			copy: function () {
+				return A(a).map(function (item) { return item; });
+			},
+
+			// A([1,2,3]).tail() == [2,3]
+			tail: function () {
+				var x = A(a).copy(); x.shift();
+				return x;
+			},
+
 			append: function () {
 				for(var i = 0, l = arguments.length; i < l; i++) {
 					var arr = arguments[i];
