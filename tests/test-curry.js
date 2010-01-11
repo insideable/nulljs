@@ -11,8 +11,9 @@ nulljs.load("com.nulljs.(TestCase|curry|context)").module("com.nulljs.tests.Test
 		},
 
 		testContext: function () {
-			var g = context(2, curry(function (y, z) { return [this, y, z]; }, 10));
-			var h = curry(context(2, function (y, z) { return [this, y, z]; }), 10);
+			var f = function (y, z) { return [this, y, z]; };
+			var g = context(2, curry(f, 10));
+			var h = curry(context(2, f), 10);
 
 			this.assertTrue(g(30).join(":") == "2:10:30", "context->curry problem");
 			this.assertTrue(h(50).join(":") == "2:10:50", "curry->context problem");
