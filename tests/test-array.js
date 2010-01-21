@@ -38,6 +38,7 @@ nulljs.load("com.nulljs.(TestCase|array)").module("com.nulljs.tests.TestArray", 
 		testWrapper: function () {
 			var a = A([1,2,3]);
 			this.assertTrue(a instanceof Array, "successor of Array expected");
+			this.assertTrue(A().length == 0);
 		},
 
 		testTail: function () {

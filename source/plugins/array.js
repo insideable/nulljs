@@ -58,13 +58,14 @@ nulljs.module("com.nulljs.array", function (api) {
 	};
 
 	var A = function (source) {
-		var hash = {forEach: forEach, map: map, filter: filter, indexOf: indexOf, copy: copy, append: append, tail: tail };
+		var hash = {forEach: forEach, map: map, filter: filter, indexOf: indexOf, copy: copy, append: append, tail: tail },
+			s = source || [];
 		for(var i in hash) {
-			if(i in source == false) {
-				source[i] = hash[i];
+			if(i in s == false) {
+				s[i] = hash[i];
 			}
 		}
-		return source;
+		return s;
 	};
 
 	A.equal = function (/* array1, array2, ... */) {
