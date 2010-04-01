@@ -69,7 +69,7 @@ nulljs.module("com.nulljs.ajax", function (api) {
 				};
 
 				return method == "GET" ? get() : post();
-			};
+			}
 		}
 	};
 
