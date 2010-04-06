@@ -46,6 +46,10 @@ nulljs.module("com.nulljs.array", function (api) {
 		return (this.shift(), this);
 	},
 
+    in_array = function (elem) {
+        return this.indexOf(elem) > -1;
+    },
+
 	// append differ from concat, append works with argument object correctly
 	append = function (/*array1, array2, ... */) {
 		for(var i = 0, l = arguments.length; i < l; i++) {
@@ -55,10 +59,15 @@ nulljs.module("com.nulljs.array", function (api) {
 			}
 		}
 		return this;
-	};
+	},
+
+    unique_append = function (elem) {
+        if (!this.in_array(elem)) this.append([elem]);
+        return this;
+    }
 
 	var A = function (source) {
-		var hash = {forEach: forEach, map: map, filter: filter, indexOf: indexOf, copy: copy, append: append, tail: tail },
+		var hash = {forEach: forEach, map: map, filter: filter, indexOf: indexOf, copy: copy, append: append, tail: tail, in_array: in_array, unique_append: unique_append },
 			s = source || [];
 		for(var i in hash) {
 			if(i in s == false) {
