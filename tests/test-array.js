@@ -47,7 +47,17 @@ nulljs.load("com.nulljs.(TestCase|array)").module("com.nulljs.tests.TestArray", 
 
 		testConcat: function () {
 			this.assertTrue(A.equal([1,2,3], A([1,2]).append([3])));
-		}
+		},
+
+        testInArray: function () {
+            this.assertTrue(A([1,2,3]).in_array(2));
+            this.assertTrue(!A([1,2,3]).in_array(4));
+        },
+
+        testUniqueAppend: function () {
+            this.assertTrue(A.equal(A([1,2,3,4]).unique_append(4), [1,2,3,4]));
+            this.assertTrue(A.equal(A([1,2,3]).unique_append(4), [1,2,3,4]));
+        }
 	});
 
 });
