@@ -21,6 +21,10 @@ nulljs.module("com.nulljs.ajax", function (api) {
 
 			xml: function () {
 				return xhr.responseXML;
+			},
+
+			status: function () {
+				return xhr.status;
 			}
 		};
 	};
