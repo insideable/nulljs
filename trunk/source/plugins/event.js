@@ -1,10 +1,11 @@
-nulljs.load("com.nulljs.browser").module("com.nulljs.event", function (api) {
+nulljs.load("com.nulljs.(browser|context)").module("com.nulljs.event", function (api) {
 
 	var event = {
 		addEventListener: typeof(window.addEventListener) == "undefined" ?
 			function (element, event_name, listener) {
-				element.attachEvent("on" + event_name, listener);
-				addLeakedHook(element, "on" + event_name, listener);
+				var l = api.com.nulljs.context(element, listener);
+				element.attachEvent("on" + event_name, l);
+				addLeakedHook(element, "on" + event_name, l);
 				return element;
 			} :
 			function (element, event_name, listener, capture) {
